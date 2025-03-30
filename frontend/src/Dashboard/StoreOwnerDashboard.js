@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { Container, Table, Button, Form, Modal } from "react-bootstrap";
 
-const API_BASE_URL = "https://roxiler-fullstack-project-bakend.onrender.com/api";
+const API_BASE_URL = "https://roxiler-fullstack-project-backend.onrender.com/api";
 
 const StoreOwnerDashboard = () => {
   const [myStores, setMyStores] = useState([]);

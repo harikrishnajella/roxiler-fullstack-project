@@ -13,7 +13,7 @@ const AdminDashboard = () => {
 
   // Fetch stores from backend
   const fetchStores = async () => {
-    const API_BASE_URL = "https://roxiler-fullstack-project-bakend.onrender.com/api";
+    const API_BASE_URL = "https://roxiler-fullstack-project-backend.onrender.com/api";
     try {
       const response = await fetch(`${API_BASE_URL}/stores`);
       const data = await response.json();
@@ -39,7 +39,7 @@ const AdminDashboard = () => {
         console.error("No token found, authorization failed.");
         return;
       }
-      const API_BASE_URL = "https://roxiler-fullstack-project-bakend.onrender.com/api";
+      const API_BASE_URL = "https://roxiler-fullstack-project-backend.onrender.com/api";
       const response = await fetch(`${API_BASE_URL}/stores`, {
         method: "POST",
         headers: { 
