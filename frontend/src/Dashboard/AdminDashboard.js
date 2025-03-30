@@ -5,7 +5,6 @@ import { Container, Table, Button, Form } from "react-bootstrap";
 import Cookies from "js-cookie"
 
 
-
 const AdminDashboard = () => {
   const [stores, setStores] = useState([]);
   const [openAddForm, setOpenAddForm] = useState(false)
