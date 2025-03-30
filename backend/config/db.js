@@ -13,7 +13,7 @@ const db = mysql.createPool({
 
 db.getConnection()
     .then(conn => {
-        console.log("Database connected successfully...");
+        console.log("MySql Database connected successfully...");
         conn.release();
     })
     .catch(err => {

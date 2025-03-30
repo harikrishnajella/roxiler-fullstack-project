@@ -14,3 +14,12 @@ exports.addStore = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+
+exports.getStores = async (req, res) => {
+    try {
+        const [stores] = await db.query('SELECT * FROM stores');
+        res.status(200).json(stores);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
