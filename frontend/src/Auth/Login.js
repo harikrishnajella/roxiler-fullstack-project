@@ -39,6 +39,7 @@ const Login = () => {
     setIsLoading(true)
     e.preventDefault();
     let url = 'https://roxiler-fullstack-project-bakend.onrender.com/api/auth/login'
+    //let url = 'http://localhost:5000/api/auth/login'
 
     const options = {
       method: "POST",
@@ -48,6 +49,7 @@ const Login = () => {
     const response = await fetch(url, options)
     const data = await response.json()
     const user = data.user[0]
+    console.log("user", user)
     await logedUser(user);
 
     setIsLoading(false)
