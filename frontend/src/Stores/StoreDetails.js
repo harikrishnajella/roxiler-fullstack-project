@@ -8,7 +8,7 @@ const StoreDetails = () => {
   const [store, setStore] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/stores/${id}`)
+    fetch(`https://roxiler-fullstack-project-bakend.onrender.com/api/stores/${id}`)
       .then((res) => res.json())
       .then(setStore);
   }, [id]);

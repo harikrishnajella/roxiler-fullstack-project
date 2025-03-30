@@ -10,7 +10,7 @@ const RateStore = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await fetch("http://localhost:5000/api/ratings", {
+    await fetch("https://roxiler-fullstack-project-bakend.onrender.com/api/ratings", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ storeId: id, rating }),

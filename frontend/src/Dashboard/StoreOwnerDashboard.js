@@ -1,12 +1,9 @@
 // src/Dashboard/StoreOwnerDashboard.js
-
-
-
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { Container, Table, Button, Form, Modal } from "react-bootstrap";
 
-const API_BASE_URL = "http://localhost:5000/api";
+const API_BASE_URL = "https://roxiler-fullstack-project-bakend.onrender.com/api";
 
 const StoreOwnerDashboard = () => {
   const [myStores, setMyStores] = useState([]);
@@ -118,50 +115,3 @@ const StoreOwnerDashboard = () => {
 };
 
 export default StoreOwnerDashboard;
-
-// import { useEffect, useState } from "react";
-// import { fetchStores } from "../services/api";
-// import { Container, Table, Button } from "react-bootstrap";
-
-// const StoreOwnerDashboard = () => {
-//   const [myStores, setMyStores] = useState([]);
-
-//   useEffect(() => {
-//     fetchStores().then((stores) => {
-//       const ownerStores = stores.filter(store => store.owner === "currentOwnerId"); // Replace with actual logic
-//       setMyStores(ownerStores);
-//     });
-//   }, []);
-
-//   return (
-//     <Container className="mt-5">
-//       <h2>Store Owner Dashboard</h2>
-//       <Button variant="primary" className="mb-3">Add New Store</Button>
-//       <Table striped bordered hover>
-//         <thead>
-//           <tr>
-//             <th>Store Name</th>
-//             <th>Address</th>
-//             <th>Rating</th>
-//             <th>Actions</th>
-//           </tr>
-//         </thead>
-//         <tbody>
-//           {myStores.map((store) => (
-//             <tr key={store.id}>
-//               <td>{store.name}</td>
-//               <td>{store.address}</td>
-//               <td>{store.rating}</td>
-//               <td>
-//                 <Button variant="warning" size="sm">Edit</Button>{' '}
-//                 <Button variant="danger" size="sm">Delete</Button>
-//               </td>
-//             </tr>
-//           ))}
-//         </tbody>
-//       </Table>
-//     </Container>
-//   );
-// };
-
-// export default StoreOwnerDashboard;

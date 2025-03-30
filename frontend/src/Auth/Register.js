@@ -21,7 +21,7 @@ const Register = () => {
     setIsLoading(true)
     e.preventDefault();
     console.log(formData)
-    let url = 'http://localhost:5000/api/auth/register'
+    let url = 'https://roxiler-fullstack-project-bakend.onrender.com/api/auth/register'
 
     if (formData.password === confirmPassword) {
       const options = {

@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://localhost:5000/api";
+const API_BASE_URL = "https://roxiler-fullstack-project-bakend.onrender.com/api";
 
 /**
  * Fetches all registered stores from the API.

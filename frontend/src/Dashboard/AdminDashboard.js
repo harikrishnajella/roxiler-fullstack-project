@@ -13,7 +13,7 @@ const AdminDashboard = () => {
 
   // Fetch stores from backend
   const fetchStores = async () => {
-    const API_BASE_URL = "http://localhost:5000/api";
+    const API_BASE_URL = "https://roxiler-fullstack-project-bakend.onrender.com/api";
     try {
       const response = await fetch(`${API_BASE_URL}/stores`);
       const data = await response.json();
@@ -39,7 +39,7 @@ const AdminDashboard = () => {
         console.error("No token found, authorization failed.");
         return;
       }
-      const API_BASE_URL = "http://localhost:5000/api";
+      const API_BASE_URL = "https://roxiler-fullstack-project-bakend.onrender.com/api";
       const response = await fetch(`${API_BASE_URL}/stores`, {
         method: "POST",
         headers: { 
@@ -115,58 +115,3 @@ const AdminDashboard = () => {
 
 export default AdminDashboard;
 
-
-
-
-
-// import { useEffect, useState } from "react";
-// //import { fetchStores } from "../services/api";
-// import { Container, Table, Button } from "react-bootstrap";
-
-// const AdminDashboard = () => {
-//   const [stores, setStores] = useState([]);
-
-//   const fetchStores = async () => {
-//     const API_BASE_URL = "http://localhost:5000/api";
-
-//     const response = await fetch(`${API_BASE_URL}/users`);
-//     const data = await response.json();
-//     console.log("fetchStores", response)
-//     console.log("fetchStores", data)
-//     setStores(data);
-//   };
-
-//   useEffect(() => {
-//     fetchStores()
-//   }, []);
-
-//   return (
-//     <Container className="mt-5">
-//       <h2>Admin Dashboard</h2>
-//       <Table striped bordered hover>
-//         <thead>
-//           <tr>
-//             <th>Store Name</th>
-//             <th>Owner</th>
-//             <th>Address</th>
-//             <th>Actions</th>
-//           </tr>
-//         </thead>
-//         <tbody>
-//           {stores.map((store) => (
-//             <tr key={store.id}>
-//               <td>{store.name}</td>
-//               <td>{store.owner}</td>
-//               <td>{store.address}</td>
-//               <td>
-//                 <Button variant="danger" size="sm">Delete</Button>
-//               </td>
-//             </tr>
-//           ))}
-//         </tbody>
-//       </Table>
-//     </Container>
-//   );
-// };
-
-// export default AdminDashboard;
