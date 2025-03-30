@@ -38,7 +38,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     setIsLoading(true)
     e.preventDefault();
-    let url = 'https://roxiler-fullstack-project-bakend.onrender.com/api/auth/login'
+    let url = 'https://roxiler-fullstack-project-backend.onrender.com/api/auth/login'
     //let url = 'http://localhost:5000/api/auth/login'
 
     const options = {
