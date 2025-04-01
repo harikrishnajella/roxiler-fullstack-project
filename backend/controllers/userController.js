@@ -1,8 +1,9 @@
-const db = require('../config/db');
+const dbPromise = require('../config/db');
 
 exports.getUsers = async (req, res) => {
     try {
-        const [users] = await db.query('SELECT * FROM users');
+        const db = await dbPromise;
+        const users = await db.all('SELECT * FROM users');
         res.json(users);
     } catch (error) {
         res.status(500).json({ error: error.message });

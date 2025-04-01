@@ -23,6 +23,7 @@ const Register = () => {
     console.log(formData)
     
     let url = 'https://roxiler-fullstack-project-backend.onrender.com/api/auth/register'
+    //let url = 'http://localhost:5000/api/auth/register'
 
     if (formData.password === confirmPassword) {
       const options = {
