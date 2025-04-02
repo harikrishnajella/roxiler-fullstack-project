@@ -20,10 +20,8 @@ const Register = () => {
   const handleSubmit = async (e) => {
     setIsLoading(true)
     e.preventDefault();
-    console.log(formData)
     
     let url = 'https://roxiler-fullstack-project-backend.onrender.com/api/auth/register'
-    //let url = 'http://localhost:5000/api/auth/register'
 
     if (formData.password === confirmPassword) {
       const options = {
@@ -33,10 +31,6 @@ const Register = () => {
       }
       const response = await fetch(url, options)
       const data = await response.json() 
-
-      console.log(response)
-      console.log(data)
-
       setIsLoading(false)
   
       if (response.ok) {

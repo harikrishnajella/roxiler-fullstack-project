@@ -19,7 +19,7 @@ exports.register = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
         const postQuery = 'INSERT INTO users (name, email, address, password, role) VALUES (?, ?, ?, ?, ?)'
         const dbResponse = await db.run(postQuery, [name, email, address, hashedPassword, role])
-        res.status(201).json({ message: 'User registered', userId: dbResponse.lastID });
+        res.status(201).json({ message: 'User registered Successfully', userId: dbResponse.lastID });
         
     } catch (error) {
         console.error('Error registering user:', error);
@@ -38,7 +38,7 @@ exports.login = async (req, res) => {
         }
 
         const token = jwt.sign({ id: dbUser.id, role: dbUser.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
-        res.json({ token, dbUser });
+        res.json({ token, dbUser, message: "User Login Successfully" });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

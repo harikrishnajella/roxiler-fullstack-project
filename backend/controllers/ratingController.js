@@ -27,8 +27,6 @@ exports.submitRating = async (req, res) => {
             return res.status(400).json({ message: 'Rating must be between 1 and 5' });
         }
 
-
-
         const ratings = await db.run(
             'INSERT INTO ratings (user_id, store_id, rating) VALUES (?, ?, ?)',
             [user_id, store_id, rating]
@@ -37,6 +35,6 @@ exports.submitRating = async (req, res) => {
         
         res.status(201).json({ message: 'Rating submitted', ratingId });
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ message: error.message });
     }
 };

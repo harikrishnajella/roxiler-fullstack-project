@@ -39,14 +39,11 @@ const Navbar = () => {
           <Nav>
             {token ? (
               <>
-              <Nav.Link as={Link} to="/dashboard/admin">
-                 AdminDashboard
+              <Nav.Link as={Link} to="/rating-form">
+                 RatingForm
                 </Nav.Link>
-                <Nav.Link as={Link} to="/dashboard/store-owner">
-                  StoreOwnerDashboard
-                </Nav.Link>
-                <Nav.Link as={Link} to="/dashboard/user">
-                  UserDashboard
+                <Nav.Link as={Link} to="/store-management">
+                StoreManagement
                 </Nav.Link>
                 <Nav.Link as={Link} to="/profile">
                   Profile

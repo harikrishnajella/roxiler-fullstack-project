@@ -12,7 +12,7 @@ exports.addStore = async (req, res) => {
         
         res.status(201).json({ message: 'Store added', storeId });
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ message: error.message });
     }
 };
 
@@ -21,8 +21,8 @@ exports.getStores = async (req, res) => {
         const db = await dbPromise;
         const stores = await db.all('SELECT * FROM stores');
         
-        res.status(200).json(stores);
+        res.status(200).json({stores: stores,  message: 'Fetching Stores'});
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ message: error.message });
     }
 };

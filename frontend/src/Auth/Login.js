@@ -25,11 +25,10 @@ const Login = () => {
 
   const onSubmitSuccess = (token) => {
     Cookies.set('token', token, {expires: 30})
-    navigate("/dashboard")    
+    navigate("/store-management")    
   }
 
   const onSubmitFailure = (msg) => {
-    toast.error(msg);
     setErrMsg(msg)
     setShowErrMsg(true)
   }
@@ -39,7 +38,6 @@ const Login = () => {
     setIsLoading(true)
     e.preventDefault();
     let url = 'https://roxiler-fullstack-project-backend.onrender.com/api/auth/login'
-    //let url = 'http://localhost:5000/api/auth/login'
 
     const options = {
       method: "POST",
@@ -48,15 +46,16 @@ const Login = () => {
     }
     const response = await fetch(url, options)
     const data = await response.json()
-    const user = data.user[0]
-    console.log("user", user)
+    const user = data.dbUser
     await logedUser(user);
 
     setIsLoading(false)
 
     if (response.ok) {
+      toast.success(data.message)
       onSubmitSuccess(data.token)
     } else {
+      toast.error(data.message)
       onSubmitFailure(data.message)
     }
   };
@@ -64,7 +63,7 @@ const Login = () => {
   const token = Cookies.get('token')
 
   if (token !== undefined){
-     return navigate('/dashboard')
+     return navigate('/store-management')
   } else {
      return (
     <Container className="mt-5">
