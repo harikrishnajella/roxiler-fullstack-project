@@ -1,21 +1,33 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Card } from "react-bootstrap";
-import { AuthContext } from "../context/AuthContext";
+import Cookies from "js-cookie";
+
 
 const Profile = () => {
-  const { user } = useContext(AuthContext);
   const [profile, setProfile] = useState(null);
 
+  const token = Cookies.get('token')
+  const API_BASE_URL = "https://roxiler-fullstack-project-backend.onrender.com/api";
+  
+    const fetchUserProfile = async () => {
+      try {
+          const options = {
+              method: "GET",
+              headers: {
+                authorization: `Bearer ${token}`
+              }
+          }
+          const response = await fetch(`${API_BASE_URL}/users`, options);
+          const data = await response.json()
+          setProfile(data[0])
+      } catch (err) {
+          console.error(err);
+      }
+  };
 
   useEffect(() => {
-    if (user) {
-      setProfile(user)
-    }
-  }, [user]);
-
-  if (!user) {
-    return <p className="text-center">Please log in to view your profile.</p>;
-  }
+      fetchUserProfile()
+   }, [token]);
 
   return (
     <Container className="mt-5">

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Button, Alert, Container, Table } from 'react-bootstrap';
+import { Form, Button, Container, Table } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import Cookies from "js-cookie";
@@ -8,8 +8,6 @@ const StoreManagement = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [address, setAddress] = useState('');
-    const [message, setMessage] = useState('');
-    const [error, setError] = useState('');
     const [stores, setStores] = useState([]);
     const [openForm, setOpenForm] = useState(false)
     
@@ -26,9 +24,6 @@ const StoreManagement = () => {
         }
         const response = await fetch(`${API_BASE_URL}/stores`, options);
         const data = await response.json()
-        console.log(response)
-        console.log(data)
-        toast.success(data.message)
         setStores(data.stores)
     } catch (err) {
         console.error(err);
@@ -37,13 +32,11 @@ const StoreManagement = () => {
 
   useEffect(() => {
     fetchStores()
-  }, []);
+  }, [token]);
     
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setMessage('');
-        setError('');
         try {
             const response = await axios.post(`${API_BASE_URL}/stores`, {
                 name,
@@ -52,14 +45,14 @@ const StoreManagement = () => {
             }, {
                 headers: { Authorization: `Bearer ${token}` },
             });
-            setMessage(response.data.message);
+            toast.success(response.data.message)
             setOpenForm((prev) => !prev)
             setName('')
             setEmail('')
             setAddress('')
             fetchStores();
         } catch (err) {
-            setError(err.response?.data?.message || 'Something went wrong');
+            toast.error(err.response?.data?.message || 'Something went wrong')
         }
     };
 
@@ -67,9 +60,7 @@ const StoreManagement = () => {
 
     return (
         <Container className="mt-4">
-            <h2 onClick={addStore}>Store Management</h2>
-            {message && <Alert variant="success">{message}</Alert>}
-            {error && <Alert variant="danger">{error}</Alert>}
+            <h2 onClick={addStore} className='text-center'>Store Rating System</h2>
             {!openForm && <Button variant="primary" className="mb-3" onClick={addStore}>Add New Store</Button>}
             {openForm &&
             <Form onSubmit={handleSubmit}>

@@ -14,16 +14,8 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
-  const logedUser = async (user) => {
-    console.log('usering', user)
-    if (user) {
-      Cookies.set('user', user, {expires: 30})
-      setUser(user);
-    }
-  };
-
   return (
-    <AuthContext.Provider value={{ user, logedUser, }}>
+    <AuthContext.Provider value={{ user, }}>
       {children}
     </AuthContext.Provider>
   );

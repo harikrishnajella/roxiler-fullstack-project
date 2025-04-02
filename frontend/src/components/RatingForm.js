@@ -18,9 +18,9 @@ const RatingForm = () => {
         axios.get(`${API_BASE_URL}/stores`, {
             headers: { Authorization: `Bearer ${token}` 
         }})
-            .then(res => setStores(res.data))
+            .then(res => setStores(res.data.stores))
             .catch(err => console.error(err));
-    }, []);
+    }, [token]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();

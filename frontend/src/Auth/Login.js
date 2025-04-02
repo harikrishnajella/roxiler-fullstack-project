@@ -1,14 +1,12 @@
 // src/Auth/Login.js
-import React, { useState, useContext  } from 'react'
+import React, { useState } from 'react'
 import {Link, useNavigate} from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Cookies from "js-cookie"
 
-import { AuthContext } from "../context/AuthContext";
 import { Form, Button, Container, Card } from "react-bootstrap";
 
 const Login = () => {
-  const { logedUser } = useContext(AuthContext);
   const [userData, setUserData] = useState({
     email: '',
     password: ''
@@ -46,9 +44,6 @@ const Login = () => {
     }
     const response = await fetch(url, options)
     const data = await response.json()
-    const user = data.dbUser
-    await logedUser(user);
-
     setIsLoading(false)
 
     if (response.ok) {
